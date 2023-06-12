@@ -40,6 +40,8 @@ export const AdminForm = ({ open, onClose }) => {
 
     console.log("data: ", data);
     dispatch(postAdminMeals(data));
+
+    onClose();
   };
 
   return (

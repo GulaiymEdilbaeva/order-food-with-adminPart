@@ -30,15 +30,12 @@ export const deleteMeal = createAsyncThunk(
   "mealsAdmin/delete",
   async (id, { dispatch }) => {
     try {
-      await deleteMealRequest(id);
-      dispatch(
-        snackbarAction({
-          severity: "success",
-          message: "delete",
-        })
-      );
+      const response = await deleteMealRequest(id);
+      console.log("response: ", response.data);
 
-      return dispatch(postAdminMeals);
+      dispatch(getFoods());
+
+      return response.data;
     } catch (error) {
       dispatch(snackbarAction.doError());
     }
